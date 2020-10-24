@@ -73,66 +73,7 @@ public void DrawChunk(float vdx, float vdxn, float vdy, float vdyn, float vdz, f
 				
 				if(bl == false || br == false || bf == false || bb == false || bu == false || bd == false) {
 				
-				Color.white.bind();
-
-			dirtTexture.bind();
-			// Front Face
-			glBegin(GL_QUADS);
-			glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f + block.getX()+ (x * size), -1.0f + block.getY()+ (y * size),  1.0f + block.getZ()+ (z * size));	// Bottom Left Of The Texture and Quad
-			glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f + block.getX()+ (x * size), -1.0f + block.getY()+ (y * size),  1.0f + block.getZ()+ (z * size));	// Bottom Right Of The Texture and Quad
-			glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f + block.getX()+ (x * size),  1.0f + block.getY()+ (y * size),  1.0f + block.getZ()+ (z * size));	// Top Right Of The Texture and Quad
-			glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f + block.getX()+ (x * size),  1.0f + block.getY()+ (y * size),  1.0f + block.getZ()+ (z * size));	// Top Left Of The Texture and Quad
-			// Back Face
-			glEnd();
-			Color.white.bind();
-
-			dirtTexture.bind();
-			glBegin(GL_QUADS);
-			glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f+ block.getX()+ (x * size), -1.0f+ block.getY()+ (y * size), -1.0f + block.getZ()+ (z * size));	// Bottom Right Of The Texture and Quad
-			glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f+ block.getX()+ (x * size),  1.0f+ block.getY()+ (y * size), -1.0f + block.getZ()+ (z * size));	// Top Right Of The Texture and Quad
-			glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f+ block.getX()+ (x * size),  1.0f+ block.getY()+ (y * size), -1.0f + block.getZ()+ (z * size));	// Top Left Of The Texture and Quad
-			glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f+ block.getX()+ (x * size), -1.0f+ block.getY()+ (y * size), -1.0f + block.getZ()+ (z * size));	// Bottom Left Of The Texture and Quad
-			// Top Face
-			glEnd();
-			Color.white.bind();
-
-			grassTexture.bind();
-			glBegin(GL_QUADS);
-			glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f+ block.getX()+ (x * size),  1.0f + block.getY()+ (y * size), -1.0f + block.getZ()+ (z * size));	// Top Left Of The Texture and Quad
-			glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f+ block.getX()+ (x * size),1.0f + block.getY()+ (y * size),  1.0f + block.getZ()+ (z * size));	// Bottom Left Of The Texture and Quad
-			glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f+ block.getX()+ (x * size),  1.0f + block.getY()+ (y * size),  1.0f + block.getZ()+ (z * size));	// Bottom Right Of The Texture and Quad
-			glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f+ block.getX()+ (x * size),  1.0f + block.getY()+ (y * size), -1.0f + block.getZ()+ (z * size));	// Top Right Of The Texture and Quad
-			// Bottom Face
-			glEnd();
-			Color.white.bind();
-
-			dirtTexture.bind();
-			glBegin(GL_QUADS);
-			glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f+ block.getX()+ (x * size), -1.0f + block.getY()+ (y * size), -1.0f + block.getZ()+ (z * size));	// Top Right Of The Texture and Quad
-			glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f+ block.getX()+ (x * size), -1.0f + block.getY()+ (y * size), -1.0f + block.getZ()+ (z * size));	// Top Left Of The Texture and Quad
-			glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f+ block.getX()+ (x * size), -1.0f + block.getY()+ (y * size),  1.0f + block.getZ()+ (z * size));	// Bottom Left Of The Texture and Quad
-			glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f+ block.getX()+ (x * size), -1.0f + block.getY()+ (y * size),  1.0f + block.getZ()+ (z * size));	// Bottom Right Of The Texture and Quad
-			// Right face
-			glEnd();
-			Color.white.bind();
-
-			dirtTexture.bind();
-			glBegin(GL_QUADS);
-			glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f+ block.getX()+ (x * size), -1.0f + block.getY()+ (y * size), -1.0f + block.getZ()+ (z * size));	// Bottom Right Of The Texture and Quad
-			glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f+ block.getX()+ (x * size),  1.0f + block.getY()+ (y * size), -1.0f + block.getZ()+ (z * size));	// Top Right Of The Texture and Quad
-			glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f+ block.getX()+ (x * size),  1.0f + block.getY()+ (y * size),  1.0f + block.getZ()+ (z * size));	// Top Left Of The Texture and Quad
-			glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f+ block.getX()+ (x * size), -1.0f + block.getY()+ (y * size),  1.0f + block.getZ()+(z * size));	// Bottom Left Of The Texture and Quad
-			// Left Face
-			glEnd();
-			Color.white.bind();
-
-			dirtTexture.bind();
-			glBegin(GL_QUADS);
-			glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f+ block.getX()+ (x * size), -1.0f + block.getY()+ (y * size), -1.0f + block.getZ()+ (z * size));	// Bottom Left Of The Texture and Quad
-			glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f+ block.getX()+ (x * size), -1.0f + block.getY()+ (y * size),  1.0f + block.getZ()+ (z * size));	// Bottom Right Of The Texture and Quad
-			glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f+ block.getX()+ (x * size),  1.0f + block.getY()+ (y * size),  1.0f + block.getZ()+ (z * size));	// Top Right Of The Texture and Quad
-			glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f+ block.getX()+ (x * size),  1.0f + block.getY()+ (y * size), -1.0f + block.getZ()+ (z * size));	// Top Left Of The Texture and Quad
-			 glEnd();
+				block.drawBlock(x, y, z, size);
 			}
 			}
 		}

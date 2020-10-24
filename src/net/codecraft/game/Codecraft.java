@@ -155,7 +155,9 @@ if(!ap & !dp) {
 		d = 0;
 	}
 	//System.out.println(d);
-	
+	System.out.println("rot X:"+ DisplayUtills.getRotX());
+	System.out.println("pos X:"+ DisplayUtills.getPosX());
+	System.out.println("pos Z:"+ DisplayUtills.getPosZ());
 	DisplayUtills.renderGL();
     Display.sync(30);
     Display.update();

@@ -53,7 +53,7 @@ private static Texture grassTexture;
 private static float density = 0.3f;
 private static  float vdx = 50;
 private static float vdxn = -50;
-private static float vdy =25;
+private static float vdy=25;
 private static float vdyn = -25;
 private static float vdz = 50;
 private static float vdzn = -50;
@@ -87,14 +87,15 @@ public static void initGL() {
 	int cz = 0;
 	
 	for(int i2 = 0; i2 < chunks.length; i2++) {
+		System.out.println("1");
 		Block Blocks[] = new Block[25*25*25];                
 		int x = 0;
 		int y = 0;
 		int z = 0;
 	for(int i = 0; i < Blocks.length; i++) {
-	
-		Blocks[i] = new BlockGrass(x, y, z,Integer.valueOf((z)+String.valueOf(x) + String.valueOf(y)));
-		
+		System.out.println("doing");
+		Blocks[i] = new BlockGrass(x, y, z);
+		System.out.println(i);
 		
 		y++;
 	
@@ -112,7 +113,7 @@ public static void initGL() {
         }
 	chunks[i2] = new Chunk(Blocks,cx,cy,cz);
 	cy++;
-	
+	System.out.println("doing 2");
 	if(cy >2) {
 		cy = 0;
 		cz++;
@@ -220,11 +221,11 @@ public static void renderGL() {
 	if(rotX > 360|| rotX < -360) {
 		rotX = 0;
 	}
-	if(rotY > 180) {
-		rotY = 180;
+	if(rotY > 160) {
+		rotY = 160;
 	}
-	if(rotY < -180) {
-		rotY = -180;
+	if(rotY < -160) {
+		rotY = -160;
 	}
 /*
 		if( DisplayUtills.getRotX() < 45 && DisplayUtills.getRotX() > -45) {
@@ -364,7 +365,7 @@ public static void renderGL() {
 				glRotatef(rotX, 0.0f,1f,0.0f);
 				glRotatef((float)(rotY *  Math.cos( yawRadian) * Math.cos(90)) ,1.0f,0.0f,0.0f);
 				glRotatef((float)(rotY *  Math.sin( yawRadian) * Math.cos(90) ) ,0.0f,0.0f,1.0f);
-					glTranslatef ( posX - 12.5f   ,  posY - 78, posZ - 12.5f);
+					glTranslatef ( posX - 12.5f   ,  posY - 75, posZ - 12.5f);
 				
 					glRotatef(0,0.0f,1.0f,0.0f);
 					glRotatef(0,1.0f,0.0f,0.0f);
@@ -424,6 +425,7 @@ public static void renderGL() {
 						   	BZ = -2;
 					   }
 					   float YH = 76;
+					   /*
 					   Color.white.bind();
 
 							dirtTexture.bind();
@@ -485,7 +487,7 @@ public static void renderGL() {
 							glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f+ -posX+BX+ 12.5f,  1.0f +  1+YH,  1.0f + -posZ+BZ+ 12.5f);	// Top Right Of The Texture and Quad
 							glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f+ -posX+BX+ 12.5f ,  1.0f +  1+YH, -1.0f + -posZ+BZ+ 12.5f);	// Top Left Of The Texture and Quad
 							 glEnd();
-					   
+					   */
 					   
                     	// set the color to white
                     
@@ -499,9 +501,7 @@ public static void renderGL() {
     				glRotatef((float)(rotY *  Math.cos( yawRadian) * Math.cos(90)) ,1.0f,0.0f,0.0f);
     				glRotatef((float)(rotY *  Math.sin( yawRadian) * Math.cos(90) ) ,0.0f,0.0f,1.0f);
                 	glTranslatef ( posX - 3,  posY - 2, posZ - 2);
-    				System.out.println(player.getX());
-    				System.out.println(player.getY());
-    				System.out.println(player.getZ());
+    			
 					glRotatef(0,0.0f,1.0f,0.0f);
 					glRotatef(0,1.0f,0.0f,0.0f);
 					glRotatef(0,0.0f,0.0f,1.0f);
@@ -545,29 +545,7 @@ public static void UpdateActiveChunks() {
 public static void placeBlocks(Block block) {
 	
 }
-public static Block binarySearch(Block arr[], int x) 
-{ 
-    int l = 0, r = arr.length - 1; 
-    while (l <= r) { 
-        int m = l + (r - l) / 2; 
 
-        // Check if x is present at mid 
-        if (arr[m].id == x) 
-            return arr[m]; 
-
-        // If x greater, ignore left half 
-        if (arr[m].id < x) 
-            l = m + 1; 
-
-        // If x is smaller, ignore right half 
-        else
-            r = m - 1; 
-    } 
-
-    // if we reach here, then element was 
-    // not present 
-    return null; 
-} 
 
 
 public static float getAngle() {

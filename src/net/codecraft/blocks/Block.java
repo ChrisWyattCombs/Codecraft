@@ -1,17 +1,19 @@
 package net.codecraft.blocks;
 
+import org.newdawn.slick.opengl.Texture;
+
 public abstract class Block {
 protected int X = 0;
 protected int Y = 0;
 protected int Z = 0;
-public int id;
 
-public abstract void drawBlock();
-public Block(int x, int y, int z, int id) {
-	X = x;
-	Y = y;
-	Z = z;
-	this.id = id;
+
+public abstract void drawBlock(int x, int y, int z, float size);
+public Block(int x2, int y2, int z2) {
+	X = x2;
+	Y = y2;
+	Z = z2;
+	
 }
 public int getX() {
 	return X;
