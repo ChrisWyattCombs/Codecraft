@@ -54,14 +54,14 @@ public class DisplayUtills {
 	private static int BlockPlaceZ;
 	private static Texture dirtTexture;
 	private static Texture grassTexture;
-	private static float density = 0.3f;
-	private static float vdx = 50;
-	private static float vdxn = -50;
+	private static float density = 0.1f;
+	private static float vdx = 25;
+	private static float vdxn = -25;
 	private static float vdy = 25;
 	private static float vdyn = -25;
-	private static float vdz = 50;
-	private static float vdzn = -50;
-	private static ByteBuffer color = ByteBuffer.allocateDirect(4);
+	private static float vdz = 25;
+	private static float vdzn = -25;
+	private static FloatBuffer color;
 	private static EntityPlayer player = new EntityPlayer(0, 3, 0);
 
 	private static float fogColor[] = { 1.0f, 1.0f, 1f, 1.0f };
@@ -84,7 +84,11 @@ public class DisplayUtills {
 
 	public static void initGL() {
 
-		color.asFloatBuffer().rewind();
+		color = BufferUtils.createFloatBuffer(4);
+		color.put((float) new Colour(0.529f, 0.808f, 0.922f, 0.5f).getRed()).put(
+                (float) (float) new Colour(0.529f, 0.808f, 0.922f, 0.5f).getGreen()).put(
+                        (float)  new Colour(0.529f, 0.808f, 0.922f, 0.5f).getBlue()).put(
+                        (float) new Colour(0.529f, 0.808f, 0.922f, 0.5f).getAlpha()).flip();
 		int startHeight = 1;
 		int height = 1;
 		int cx = 0;
@@ -368,7 +372,15 @@ public class DisplayUtills {
 		// bind our FBO texture
 
 		int count = 0;
+		glEnable (GL_DEPTH_TEST); 
+		GL11.glEnable(GL_FOG);
+		glFogf (GL_FOG_DENSITY, density); //set the density to the
+		GL11.glFog(GL_FOG_COLOR, color);
+		glHint (GL_FOG_HINT, GL_NICEST); // set the fog to look the
 
+        GL11.glFogf(GL_FOG_MODE, GL_EXP2);
+        
+    
 		for (Chunk chunk : chunks) {
 			if (count == 0) {
 
