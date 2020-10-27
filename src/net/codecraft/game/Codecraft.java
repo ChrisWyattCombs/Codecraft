@@ -170,7 +170,7 @@ if(!ap & !dp) {
 	System.out.println("pos X:"+ DisplayUtills.getPosX());
 	System.out.println("pos Z:"+ DisplayUtills.getPosZ());
 	DisplayUtills.renderGL();
-    Display.sync(30);
+    Display.sync(60);
     Display.update();
   
 }

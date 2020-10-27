@@ -55,7 +55,7 @@ public class DisplayUtills {
 	private static Texture dirtTexture;
 	private static Texture grassTexture;
 	private static float density = 0.1f;
-	private static float vdx = 25;
+	private static float vdx = 50;
 	private static float vdxn = -25;
 	private static float vdy = 25;
 	private static float vdyn = -25;
@@ -66,7 +66,7 @@ public class DisplayUtills {
 
 	private static float fogColor[] = { 1.0f, 1.0f, 1f, 1.0f };
 //private static Block Blocks[] = new Block[25*25*25];
-	private static Chunk chunks[] = new Chunk[3 * 8 * 8];
+	private static Chunk chunks[] = new Chunk[3 * 6 * 6];
 	private static Chunk ativeChunks[] = new Chunk[1];
 	private static FloatBuffer fb = BufferUtils.createFloatBuffer(16);
 	static Matrix4f m = new Matrix4f();
@@ -198,7 +198,7 @@ public class DisplayUtills {
 				cz++;
 
 			}
-			if (cz > 7) {
+			if (cz > 3) {
 				cz = 0;
 				cx++;
 			}
