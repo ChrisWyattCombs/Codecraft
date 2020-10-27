@@ -39,7 +39,7 @@ public void drawBlock(int x, int y, int z, float size) {
 	Color.white.bind();
 
 	dirtTexture.bind();
-	// Front Face
+	// Front Facew
 	glBegin(GL_QUADS);
 	glTexCoord2f(0.0f, 0.0f); glVertex3f(-0.5f + (X+ (x * size)), -0.5f + (Y+ (y * size)),  0.5f + (Z+ (z * size)));	// Bottom Left Of The Texture and Quad
 	glTexCoord2f(1.0f, 0.0f); glVertex3f( 0.5f + (X+ (x * size)), -0.5f + (Y+ (y * size)),  0.5f + (Z+ (z * size)));	// Bottom Right Of The Texture and Quad

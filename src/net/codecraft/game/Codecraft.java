@@ -120,22 +120,33 @@ if(!ap & !dp) {
 
 	if(Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
 	
-
+/*
 		if(DisplayUtills.getPosY()==0){
 			vs -= 0.63f;
 		}
-		
+		*/
+		DisplayUtills.setPosY(DisplayUtills.getPosY() - 0.1f);
 		
 	}
+	if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
+		
+		/*
+				if(DisplayUtills.getPosY()==0){
+					vs -= 0.63f;
+				}
+				*/
+				DisplayUtills.setPosY(DisplayUtills.getPosY() + 0.1f);
+				
+			}
 	if(DisplayUtills.getPosY()<0){
 		vs += 0.06f;
 	}
-
+/*
 	DisplayUtills.setPosY(DisplayUtills.getPosY() + vs);
 	if(DisplayUtills.getPosY()>=0.0f){
 		DisplayUtills.setPosY(0);
 		vs = 0;
-	}
+	}*/
 	if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
 		Display.destroy();
 		Mouse.destroy();
