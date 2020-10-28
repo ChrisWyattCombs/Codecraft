@@ -36,17 +36,7 @@ public Chunk(Block Blocks[], int x, int y, int z) {
 		isBlockInPos[block.getX()][block.getY()][block.getZ()] = true;
 		}
 	}
-	try {
-		dirtTexture = TextureLoader.getTexture("JPG", ResourceLoader.getResourceAsStream("Resources/Textures/Blocks/dirt.jpg"));
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}try {
-	grassTexture = TextureLoader.getTexture("JPG", ResourceLoader.getResourceAsStream("Resources/Textures/Blocks/grass.jpg"));
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+	
 }
 public void DrawChunk(float vdx, float vdxn, float vdy, float vdyn, float vdz, float vdzn ) {
 	float pitchRadian = (float) (DisplayUtills.getRotY()/2 * (Math.PI / 180)); // X rotation

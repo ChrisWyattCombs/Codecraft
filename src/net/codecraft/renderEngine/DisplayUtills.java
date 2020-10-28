@@ -66,7 +66,7 @@ public class DisplayUtills {
 
 	private static float fogColor[] = { 1.0f, 1.0f, 1f, 1.0f };
 //private static Block Blocks[] = new Block[25*25*25];
-	private static Chunk chunks[] = new Chunk[25 * 3 * 25];
+	private static Chunk chunks[] = new Chunk[50 * 3 * 50];
 	private static Chunk ativeChunks[] = new Chunk[8 * 3 * 8];
 	private static FloatBuffer fb = BufferUtils.createFloatBuffer(16);
 	static Matrix4f m = new Matrix4f();
@@ -198,7 +198,7 @@ public class DisplayUtills {
 				cz++;
 
 			}
-			if (cz > 24) {
+			if (cz > 49) {
 				cz = 0;
 				cx++;
 			}
