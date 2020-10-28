@@ -55,7 +55,7 @@ public class DisplayUtills {
 	private static Texture dirtTexture;
 	private static Texture grassTexture;
 	private static float density = 0.1f;
-	private static float vdx = 50;
+	private static float vdx = 25;
 	private static float vdxn = -25;
 	private static float vdy = 25;
 	private static float vdyn = -25;
@@ -66,8 +66,8 @@ public class DisplayUtills {
 
 	private static float fogColor[] = { 1.0f, 1.0f, 1f, 1.0f };
 //private static Block Blocks[] = new Block[25*25*25];
-	private static Chunk chunks[] = new Chunk[3 * 6 * 6];
-	private static Chunk ativeChunks[] = new Chunk[1];
+	private static Chunk chunks[] = new Chunk[25 * 3 * 25];
+	private static Chunk ativeChunks[] = new Chunk[8 * 3 * 8];
 	private static FloatBuffer fb = BufferUtils.createFloatBuffer(16);
 	static Matrix4f m = new Matrix4f();
 
@@ -150,7 +150,7 @@ public class DisplayUtills {
 						height = startHeight;
 					}
 				int r = (int) (Math.random() * (250 - 1 + 1) + 1);
-			System.out.println(r);
+		
 					
 						count++;
 		
@@ -198,13 +198,13 @@ public class DisplayUtills {
 				cz++;
 
 			}
-			if (cz > 3) {
+			if (cz > 24) {
 				cz = 0;
 				cx++;
 			}
-
+System.out.println(cx);
 		}
-
+calculateActiveChunks();
 		UpdateActiveChunks();
 		/*
 		 * GL11.glEnable(GL11.GL_BLEND); GL11.glBlendFunc(GL11.GL_SRC_ALPHA,
@@ -350,7 +350,7 @@ public class DisplayUtills {
 		glBindTexture(GL_TEXTURE_2D, 0); // unlink textures because if we dont it all is gonna fail
 		glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, framebufferID); // switch to rendering on our FBO
 
-		glClearColor(0.04f, 0.196f, 0.125f, 0.5f);
+		glClearColor(0.04f, 0.196f, 0.125f, 0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear Screen And Depth Buffer on the fbo to red
 		// draw the box
 
@@ -381,7 +381,8 @@ public class DisplayUtills {
         GL11.glFogf(GL_FOG_MODE, GL_EXP2);
         
     
-		for (Chunk chunk : chunks) {
+		for (Chunk chunk : ativeChunks) {
+			
 			if (count == 0) {
 
 				glLoadMatrix(m.get(fb));
@@ -398,7 +399,7 @@ public class DisplayUtills {
 
 				count++;
 			}
-
+			
 			int BX = 0;
 			int BZ = 0;
 			if (rotX < 45 && rotX > -45 && rotY < 45 && rotY > -45) {
@@ -515,9 +516,9 @@ public class DisplayUtills {
 			 */
 
 			// set the color to white
-
+			if(chunk != null) {
 			chunk.DrawChunk(vdx, vdxn, vdy, vdyn, vdz, vdzn);
-
+			}
 		}
 
 		glLoadMatrix(m.get(fb));
@@ -622,7 +623,15 @@ public class DisplayUtills {
 	public static void setRealRotX(float realRotX) {
 		DisplayUtills.realRotX = realRotX;
 	}
-
+public static void calculateActiveChunks() {
+	int i = 0;
+	for(Chunk chunk : chunks) {
+		if(chunk.getX() * 25 + posX < 60 && chunk.getX() * 25 + posX > -60 && chunk.getY() * 25 + posY < 60 && chunk.getY() * 25 + posY > -60 && chunk.getZ() * 25 + posZ < 60 && chunk.getZ() * 25 + posZ > -60) {
+			ativeChunks[i] = chunk;
+			i++;
+		}
+	}
+}
 	/**
 	 * Set the display mode to be used
 	 * 

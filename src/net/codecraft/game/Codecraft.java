@@ -28,6 +28,7 @@ float hsf = 0f;
 float hslr= 0f;
 
 float d = 0;
+long startTime = System.currentTimeMillis();
 while (!Display.isCloseRequested()) {
 	
 	float yawRadian  = (float) (DisplayUtills.getRotX() * (Math.PI / 180));
@@ -170,9 +171,17 @@ if(!ap & !dp) {
 	System.out.println("pos X:"+ DisplayUtills.getPosX());
 	System.out.println("pos Z:"+ DisplayUtills.getPosZ());
 	DisplayUtills.renderGL();
-    Display.sync(60);
+    try {
+		Thread.sleep(1000/60);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     Display.update();
-  
+  if(System.currentTimeMillis() - startTime >= 10000) {
+	  DisplayUtills.calculateActiveChunks();
+	  startTime = System.currentTimeMillis();
+  }
 }
 Mouse.destroy();
 Display.destroy();
