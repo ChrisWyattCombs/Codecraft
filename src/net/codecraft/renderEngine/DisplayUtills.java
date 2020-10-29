@@ -41,7 +41,7 @@ public class DisplayUtills {
 	private static float angle;
 	private static float posZ = 0;
 	private static float posX = 0;
-	private static float posY =-65;
+	private static float posY =-40;
 	private static int colorTextureID;
 	private static int framebufferID;
 	private static int depthRenderBufferID;
@@ -66,7 +66,7 @@ public class DisplayUtills {
 
 	private static float fogColor[] = { 1.0f, 1.0f, 1f, 1.0f };
 //private static Block Blocks[] = new Block[25*25*25];
-	private static Chunk chunks[] = new Chunk[50 * 3 * 50];
+	private static Chunk chunks[] = new Chunk[50 * 1 * 50];
 	private static Chunk ativeChunks[] = new Chunk[8 * 3 * 8];
 	private static FloatBuffer fb = BufferUtils.createFloatBuffer(16);
 	static Matrix4f m = new Matrix4f();
@@ -89,8 +89,8 @@ public class DisplayUtills {
                 (float) (float) new Colour(0.529f, 0.808f, 0.922f, 0.5f).getGreen()).put(
                         (float)  new Colour(0.529f, 0.808f, 0.922f, 0.5f).getBlue()).put(
                         (float) new Colour(0.529f, 0.808f, 0.922f, 0.5f).getAlpha()).flip();
-		int startHeight = 1;
-		int height = 1;
+		int startHeight = 25;
+		int height = 25;
 		int cx = 0;
 		int cy = 0;
 		int cz = 0;
@@ -98,53 +98,13 @@ public class DisplayUtills {
 		int count = 0;
 		for (int i2 = 0; i2 < chunks.length; i2++) {
 
-			Block Blocks[] = new Block[25 * 25 * 25];
+			Block Blocks[] = new Block[35 * 75 * 35];
 			
 			int x = 0;
 			int y = 0;
 			int z = 0;
 			for (int i = 0; i < Blocks.length; i++) {
-				if(cy == 0) {
-				Blocks[i] = new BlockStone(x, y, z);
 				
-
-				y++;
-
-				if (y > 24) {
-					y = 0;
-					x++;
-
-				}
-				if (x > 24) {
-					x = 0;
-					z++;
-				}
-				}
-				else if(cy == 1) {
-					
-					if(y < 20) {
-					Blocks[i] = new BlockStone(x, y, z);
-					}
-					 if(y < 24 && y >= 20) {
-						Blocks[i] = new BlockDirt(x, y, z);
-						}if(y == 24) {
-							Blocks[i] = new BlockGrass(x, y, z);
-							}
-
-
-					y++;
-
-					if (y > 24) {
-						y = 0;
-						x++;
-
-					}
-					if (x > 24) {
-						x = 0;
-						z++;
-					}
-				}
-				if(cy == 2) {
 					
 					if(x == 0 && z == 0) {
 						height = startHeight;
@@ -163,11 +123,11 @@ public class DisplayUtills {
 						y = 0;
 						x++;
 						if(r == 1) {
-							if(height != 10) {
+							if(height != 35) {
 						height++;
 							}
 						}else if(r == 15) {
-							if(height != 1) {
+							if(height != 25) {
 							height--;
 							}
 						
@@ -175,25 +135,25 @@ public class DisplayUtills {
 					}
 						
 				
-					if (x > 24) {
+					if (x > 34) {
 						if(z == 0) {
 							startHeight = height;
 						}
 						x = 0;
 						z++;
 					}
-					if (z > 24) {
+					if (z > 34) {
 						break;
 					}
 					
 				
 				}
-			}
+			
 			
 			chunks[i2] = new Chunk(Blocks, cx, cy, cz);
 			cy++;
 		
-			if (cy > 2) {
+			if (cy > 0) {
 				cy = 0;
 				cz++;
 
@@ -626,7 +586,7 @@ calculateActiveChunks();
 public static void calculateActiveChunks() {
 	int i = 0;
 	for(Chunk chunk : chunks) {
-		if(chunk.getX() * 25 + posX < 60 && chunk.getX() * 25 + posX > -60 && chunk.getY() * 25 + posY < 60 && chunk.getY() * 25 + posY > -60 && chunk.getZ() * 25 + posZ < 60 && chunk.getZ() * 25 + posZ > -60) {
+		if(chunk.getX() * 25 + posX < 60 && chunk.getX() * 25 + posX > -60 && chunk.getY() * 25 + posY < 80 && chunk.getY() * 25 + posY > -80 && chunk.getZ() * 25 + posZ < 60 && chunk.getZ() * 25 + posZ > -60) {
 			ativeChunks[i] = chunk;
 			i++;
 		}

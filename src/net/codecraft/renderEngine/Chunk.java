@@ -20,10 +20,10 @@ private Block Blocks[];
 private int x;
 private int y;
 private int z;
-private float size = 25;
+private float size = 35;
 private Texture dirtTexture;
 private Texture grassTexture;
-public  boolean[][][] isBlockInPos = new boolean[25][25][25];
+public  boolean[][][] isBlockInPos = new boolean[35][75][35];
 
 
 public Chunk(Block Blocks[], int x, int y, int z) {

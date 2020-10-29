@@ -178,7 +178,7 @@ if(!ap & !dp) {
 		e.printStackTrace();
 	}
     Display.update();
-  if(System.currentTimeMillis() - startTime >= 10000) {
+  if(System.currentTimeMillis() - startTime >= 3000) {
 	  DisplayUtills.calculateActiveChunks();
 	  startTime = System.currentTimeMillis();
   }
