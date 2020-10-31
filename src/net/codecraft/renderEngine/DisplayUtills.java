@@ -54,20 +54,20 @@ public class DisplayUtills {
 	private static int BlockPlaceZ;
 	private static Texture dirtTexture;
 	private static Texture grassTexture;
-	private static float density = 0.1f;
-	private static float vdx = 25;
-	private static float vdxn = -25;
+	private static float density = 0.06f;
+	private static float vdx = 50;
+	private static float vdxn = -50;
 	private static float vdy = 25;
 	private static float vdyn = -25;
-	private static float vdz = 25;
-	private static float vdzn = -25;
+	private static float vdz = 50;
+	private static float vdzn = -50;
 	private static FloatBuffer color;
 	private static EntityPlayer player = new EntityPlayer(0, 3, 0);
 
 	private static float fogColor[] = { 1.0f, 1.0f, 1f, 1.0f };
 //private static Block Blocks[] = new Block[25*25*25];
 	private static Chunk chunks[] = new Chunk[50 * 1 * 50];
-	private static Chunk ativeChunks[] = new Chunk[8 * 3 * 8];
+	private static Chunk ativeChunks[] = new Chunk[10 * 3 * 10];
 	private static FloatBuffer fb = BufferUtils.createFloatBuffer(16);
 	static Matrix4f m = new Matrix4f();
 
@@ -586,7 +586,7 @@ calculateActiveChunks();
 public static void calculateActiveChunks() {
 	int i = 0;
 	for(Chunk chunk : chunks) {
-		if(chunk.getX() * 25 + posX < 60 && chunk.getX() * 25 + posX > -60 && chunk.getY() * 25 + posY < 80 && chunk.getY() * 25 + posY > -80 && chunk.getZ() * 25 + posZ < 60 && chunk.getZ() * 25 + posZ > -60) {
+		if(chunk.getX() * 35 + posX < 60 && chunk.getX() * 35 + posX > -60 && chunk.getY() * 35 + posY < 80 && chunk.getY() * 25 + posY > -80 && chunk.getZ() * 35 + posZ < 60 && chunk.getZ() * 35 + posZ > -60) {
 			ativeChunks[i] = chunk;
 			i++;
 		}
