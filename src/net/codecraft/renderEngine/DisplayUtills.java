@@ -35,7 +35,7 @@ public class DisplayUtills {
    private static int BlockPlaceZ;
    private static Texture dirtTexture;
    private static Texture grassTexture;
-   private static float density = 0.06f; // this is adjustment for fog density
+   private static float density = 0.1f; // this is adjustment for fog density
    private static float vdx = 25; // this is adjustment for horizontal axis (pos)
    private static float vdxn = -25; // this is adjustment for horizontal axis (neg)
    private static float vdy = 25; // this is adjustment for vertical axis (pos)
@@ -48,7 +48,7 @@ public class DisplayUtills {
    private static float fogColor[] = {1.0f, 1.0f, 1f, 1.0f};
    //private static Block Blocks[] = new Block[25*25*25];
    private static Chunk chunks[] = new Chunk[50 * 1 * 50];
-   private static Chunk ativeChunks[] = new Chunk[10 * 3 * 10];
+   private static Chunk ativeChunks[] = new Chunk[6 * 1*  6];
    private static FloatBuffer fb = BufferUtils.createFloatBuffer(16);
    static Matrix4f m = new Matrix4f();
 
@@ -90,7 +90,7 @@ public class DisplayUtills {
 			if (x == 0 && z == 0) {
 			   height = startHeight;
 			}
-			int r = (int) (Math.random() * (250 - 1 + 1) + 1);
+			int r = (int) (Math.random() * (500 - 1 + 1) + 1);
 
 
 			count++;
@@ -107,7 +107,7 @@ public class DisplayUtills {
 				  if (height != 35) {
 					 height++;
 				  }
-			   } else if (r == 15) {
+			   } else if (r == 500) {
 				  if (height != 25) {
 					 height--;
 				  }
