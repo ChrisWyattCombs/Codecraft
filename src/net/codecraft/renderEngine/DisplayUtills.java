@@ -90,7 +90,7 @@ public class DisplayUtills {
 			if (x == 0 && z == 0) {
 			   height = startHeight;
 			}
-			int r = (int) (Math.random() * (500 - 1 + 1) + 1);
+			int r = (int) (Math.random() * (750 - 1 + 1) + 1);
 
 
 			count++;
